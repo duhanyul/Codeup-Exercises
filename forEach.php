@@ -19,10 +19,7 @@ foreach ($things as $value) {
       foreach ($value as $key) {
         echo "$key" . PHP_EOL;
       }
-  }if ($value === false) {
-    echo "false";
-  }if ($value === null) {
-    echo "null";
+  }else {
+    echo "$value" . PHP_EOL;
   }
-  echo "$value" . PHP_EOL;
 }
