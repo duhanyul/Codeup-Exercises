@@ -5,10 +5,8 @@
 
  // Get Day of Week as number
  // 1 (for Monday) through 7 (for Sunday)
- echo "Enter a number between 1-7 for the day of the week:";
- $input = trim(fgets(STDIN));
  echo PHP_EOL;
- $dayOfWeek = date($input);
+ $dayOfWeek = date('N');
 
  switch($dayOfWeek) {
      case 1:
