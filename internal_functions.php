@@ -54,3 +54,14 @@ echo 'Inspecting $array1' . PHP_EOL;
 echo "The type is : " . inspect($array1) .PHP_EOL;
 echo 'Inspecting $array2' . PHP_EOL;
 echo 'The type of $array2 is: ' . inspect($array2) .PHP_EOL;
+
+
+
+function counts($input){
+  foreach (count_chars($input,1) as $key => $value) {
+    if ($key !== " ") {
+      echo "There are $value of " . chr($key) . PHP_EOL;
+    }
+  }
+}
+counts("MynameisDanielRojo");
