@@ -5,10 +5,10 @@ $names = ['Tina', 'Dana', 'Mike', 'Amy', 'Adam'];
 $compare = ['Tina', 'Dean', 'Mel', 'Amy', 'Michael'];
 
 function search($input,$array){
-  if (in_array($input,$array)) {
-    return true;
+  if (array_search($input,$array) === false) {
+    return "FALSE";
   }else{
-    return false;
+    return "TRUE";
   }
 }
 
