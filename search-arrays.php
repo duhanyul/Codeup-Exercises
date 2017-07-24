@@ -6,13 +6,17 @@ $compare = ['Tina', 'Dean', 'Mel', 'Amy', 'Michael'];
 
 function search($input,$array){
   if (array_search($input,$array) === false) {
-    return "FALSE";
+    return false;
   }else{
-    return "TRUE";
+    return true;
   }
 }
+if (search("Tina",$names)) {
+  echo "Tina was in the array!" . PHP_EOL;
+}else {
+  echo "Tina was not in the array" . PHP_EOL;
+}
 
-echo search("Tina",$names) . PHP_EOL;
 
 function compareCount($array1,$array2){
   $count = 0;
