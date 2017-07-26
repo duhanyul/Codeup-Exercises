@@ -17,6 +17,7 @@ function isEven($input){
     }
   }else {
     echo "NOT A NUMBER!" . PHP_EOL;
+    return false;
   }
 }
 
@@ -25,7 +26,7 @@ function isEven($input){
 
 function isVowel($input){
   if (is_string($input)) {
-    if (strlen($input) > 1) {
+    if (strlen($input) <= 1) {
       switch ($input) {
         case 'a':
         return true;
@@ -46,9 +47,12 @@ function isVowel($input){
         return false;
         break;
       }
+    }else {
+      echo "NOT A SINGLE CHARACTER" . PHP_EOL;
+      return false;
     }
   }else {
-    echo "NOT A SINGLE CHARACTER" . PHP_EOL;
+    return false;
   }
 }
 
@@ -80,8 +84,7 @@ function second($input){
           $first = $input[$key];
           break;
         }
-        $first = $input[$key];
-
+        $i++;
       }
       return $first;
     }
@@ -133,18 +136,18 @@ function random($input){
 
 /**************** FUN STUFF ****************/
 function generate(){
-  for ($i=0; $i <= 5 ; $i++) {
-    $testArray[$i]= mt_rand(0,9);
+  for ($i=0; $i <= 9 ; $i++) {
+    $testArray[$i]= mt_rand(0,99);
   }
   return $testArray;
 }
 function noRepeats($input){
-  $number = mt_rand(0,9);
+  $number = mt_rand(0,99);
   if (empty($input)) {
     return $number;
   }else{
     while (in_array($number,$input)) {
-      $number = mt_rand(0,9);
+      $number = mt_rand(0,99);
     }
     return $number;
   }
@@ -158,7 +161,7 @@ function matching($inputArray){
   $tempArray = $inputArray;
   $fails = [];
   while ($compareArray !== $inputArray) {
-    print_r($fails);
+    // print_r($fails);
     if (!empty($tempArray)) {
       $compareArray[$count] = noRepeats($fails);
       if ($compareArray[$count] == $tempArray[0]) {
