@@ -131,17 +131,50 @@ function random($input){
   }
 }
 
-for ($i=0; $i <= 100 ; $i++) {
-  $testArray[$i]= $i;
+/**************** FUN STUFF ****************/
+function generate(){
+  for ($i=0; $i <= 5 ; $i++) {
+    $testArray[$i]= mt_rand(0,9);
+  }
+  return $testArray;
+}
+function noRepeats($input){
+  $number = mt_rand(0,9);
+  if (empty($input)) {
+    return $number;
+  }else{
+    while (in_array($number,$input)) {
+      $number = mt_rand(0,9);
+    }
+    return $number;
+  }
+
+  return $number;
+}
+function matching($inputArray){
+  $compareArray = [];
+  $count = 0;
+  $tries = 0;
+  $tempArray = $inputArray;
+  $fails = [];
+  while ($compareArray !== $inputArray) {
+    print_r($fails);
+    if (!empty($tempArray)) {
+      $compareArray[$count] = noRepeats($fails);
+      if ($compareArray[$count] == $tempArray[0]) {
+        array_shift($tempArray);
+        $fails = [];
+        $count++;
+      }else {
+        array_push($fails,$compareArray[$count]);
+        $tries++;
+      }
+    }
+  }
+  print_r($compareArray);
+  echo "It took $tries tries" . PHP_EOL;
+  echo "THEY ARE THE SAME" . PHP_EOL;
 }
 
-function test($input){
-  for ($i=0; $i <= 100; $i++) {
-    echo random($input);
-  }
-  echo PHP_EOL;
-}
-for ($i=0; $i <= 100000000000 ; $i++) {
-  test($testArray);
-  # code...
-}
+
+matching(generate());
